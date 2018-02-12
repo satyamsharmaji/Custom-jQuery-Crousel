@@ -1,0 +1,79 @@
+<html>
+	<head>
+		<title>Crousel</title>
+		<script
+		  src="http://code.jquery.com/jquery-3.3.1.min.js"
+		  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		  crossorigin="anonymous"></script>
+	</head>
+	<body>
+		
+		<div id="my_crousel">
+			<div class="items">
+				<img src="https://www.w3schools.com/howto/img_fjords.jpg" alt="image" width="100%">
+			</div>
+			<div class="items">
+				<img src="https://www.w3schools.com/howto/img_fjords.jpg" alt="image" width="100%">
+			</div>
+			<div class="items">
+				<img src="https://media.mnn.com/assets/images/2015/05/fjord-01.jpeg" alt="image" width="100%">
+			</div>
+			<div class="items">
+				<img src="https://media.mnn.com/assets/images/2015/05/fjord-01.jpeg" alt="image" width="100%">
+			</div>
+			<div class="items">
+				<img src="https://www.w3schools.com/howto/img_fjords.jpg" alt="image" width="100%">
+			</div>
+			<div class="items">
+				<img src="https://www.w3schools.com/howto/img_fjords.jpg" alt="image" width="100%">
+			</div>
+		</div>
+		<script>
+		$(document).ready(function(){
+			function crousel(showelement){
+				var allelement = $(".items");
+				var selem = 1;
+				$(".items").css({
+				"float"	: "left",
+				"margin" : "10px 10px"
+				});
+				
+				allelement.hide();
+				var len = $(".items").length;
+				var elemwidth = 90/showelement.leng;
+				
+				for(showitem = selem; showitem <= showelement.leng; showitem++){
+					$(".items:nth-child("+showitem+")").show();
+					
+					$(".items").width(elemwidth+"%");
+				}
+				if(showelement.leng > 1){
+					$("#my_crousel").after("<div  style='clear:both' class='crousel_navigation'><span id='prev' style='cursor:pointer' >Pre</span><span id='next' style='cursor:pointer'>Next</span></div>")
+				}
+				$("#prev").click(function(){
+					
+				});
+				$("#next").click(function(){
+				
+				selem = selem + showelement.leng;
+				showelement.leng = showelement.leng+showelement.leng;
+					allelement.hide();
+					for(showitem = selem; showitem <= showelement.leng; showitem++){
+						$(".items:nth-child("+showitem+")").show();
+						
+						$(".items").width(elemwidth+"%");
+					}
+					alert(selem);
+					alert(showelement.leng);
+					
+					
+				});
+				
+			}
+				crousel({
+					leng : 2,
+				});
+		});
+		</script>
+	</body>
+</html>
